@@ -5,10 +5,13 @@ from flask import Flask
 from flask import request
 from flask import jsonify
 from minecraft_query import MinecraftQuery
+from crossdomain import crossdomain
 
 app = Flask(__name__)
 
+
 @app.route("/query", methods=["GET"])
+@crossdomain(origin="*")
 def serverQuery():
     host = request.args.get("host")
     port = request.args.get("port")
